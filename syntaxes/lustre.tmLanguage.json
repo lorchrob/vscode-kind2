@@ -425,6 +425,22 @@
           ]
         },
         {
+          "comment": "History",
+          "begin": "\\b(history)\\s*\\(",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.lustre"
+            }
+          },
+          "end": "\\)",
+          "patterns": [
+            {
+              "name": "variable.other.lustre",
+              "match": "\\w+"
+            }
+          ]
+        },
+        {
           "comment": "Tuples.",
           "begin": "\\[",
           "end": "\\]",

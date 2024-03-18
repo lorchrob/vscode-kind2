@@ -425,6 +425,24 @@
           ]
         },
         {
+          "comment": "Refinement types",
+          "begin": "\\b(subtype)\\s*\\{\\s*\\w\\:",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.lustre"
+            }
+          },
+          "end": "\\}",
+          "patterns": [
+            {
+              "include": "#type"
+            },
+            {
+              "include": "#expression"
+            }
+          ]
+        },
+        {
           "comment": "History",
           "begin": "\\b(history)\\s*\\(",
           "beginCaptures": {
@@ -529,7 +547,7 @@
         },
         {
           "begin": "\\(",
-          "end": "(?=(let|returns))",
+          "end": "(?=(\\(\\*@contract|const|var|let|returns))",
           "patterns": [
             {
               "match": "\\)"
@@ -562,16 +580,10 @@
             {
               "comment": "Type for an input/output.",
               "begin": ":",
-              "end": ";|(?=(let|returns))",
+              "end": ";|(?=(\\(\\*@contract|const|var|let|returns))",
               "patterns": [
                 {
                   "include": "#type"
-                },
-                {
-                  "match": "\\)"
-                },
-                {
-                  "match": "((\\s*);(\\s*))"
                 },
                 {
                   "include": "#comment"

@@ -451,6 +451,9 @@
           ]
         },
         {
+          "include": "#expression"
+        },
+        {
           "comment": "User-defined type.",
           "name": "support.type.lustre",
           "match": "\\w+"
@@ -507,6 +510,12 @@
       },
       "patterns": [
         {
+          "match": "\\)"
+        },
+        {
+          "match": "((\\s*);(\\s*))"
+        },
+        {
           "match": "\\b(imported|returns)\\b",
           "captures": {
             "1": {
@@ -520,8 +529,14 @@
         },
         {
           "begin": "\\(",
-          "end": "\\)",
+          "end": "(?=(let|returns))",
           "patterns": [
+            {
+              "match": "\\)"
+            },
+            {
+              "match": "((\\s*);(\\s*))"
+            },
             {
               "comment": "Input/output name.",
               "begin": "(?<=;|\\(|,)",
@@ -547,10 +562,16 @@
             {
               "comment": "Type for an input/output.",
               "begin": ":",
-              "end": ";|(?=\\))",
+              "end": ";|(?=(let|returns))",
               "patterns": [
                 {
                   "include": "#type"
+                },
+                {
+                  "match": "\\)"
+                },
+                {
+                  "match": "((\\s*);(\\s*))"
                 },
                 {
                   "include": "#comment"

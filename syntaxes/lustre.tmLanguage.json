@@ -586,6 +586,12 @@
                   "include": "#type"
                 },
                 {
+                  "match": "\\)"
+                },
+                {
+                  "match": "((\\s*);(\\s*))"
+                },
+                {
                   "include": "#comment"
                 }
               ]
